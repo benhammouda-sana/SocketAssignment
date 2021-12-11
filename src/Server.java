@@ -20,6 +20,20 @@ public class Server {
         PrintWriter outServer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socClient.getOutputStream())), true);
 
         // todo: implement the scenario
+        String msg = inServer.readLine();
+        String newMsg = "";
+        for (int i=0;i<msg.length();i++){
+            if (Character.toUpperCase(msg.charAt(i)) == 'A' ||
+                    Character.toUpperCase(msg.charAt(i)) == 'O' ||
+                    Character.toUpperCase(msg.charAt(i)) == 'I' ||
+                    Character.toUpperCase(msg.charAt(i)) == 'U' ||
+                    Character.toUpperCase(msg.charAt(i)) == 'Y' ||
+                    Character.toUpperCase(msg.charAt(i)) == 'E'  ){
+                continue;
+            }
+            newMsg  = newMsg+msg.charAt(i);
+        }
+        outServer.println(newMsg);
 
         // Close in / out
         inServer.close();
